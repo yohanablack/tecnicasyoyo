@@ -6,16 +6,16 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     {
-        enunciado: "Assim que saiu da escola você se depara com um robo IA, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
+        enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
         alternativas: [
             {
-                texto: "Isso é medonho!",
-                afirmacao: ["No início ficou com medo do que esse robo IA pode fazer. ",
-                    "Achou assustador pensar na velocidade na qual a nossa tecnologia está avançando."
+                texto: "Isso é assustador!",
+                afirmacao: ["No início ficou com medo do que essa tecnologia pode fazer. ",
+                    "Achou assustador pensar na velocidade na qual a tecnologia está avançando."
                 ]
             },
             {
-                texto: "Isso é esplendido!",
+                texto: "Isso é maravilhoso!",
                 afirmacao: ["Quis saber como usar IA no seu dia a dia.",
                     "Foi atrás de vídeos, artigos e mais informaçõe sobre como utilizar essa tecnologia."
                 ]
@@ -116,7 +116,7 @@ function mostraAlternativas() {
 }
 
 function respostaSelecionada(opcaoSelecionada) {
-    const afirmacoes = opcaoSelecionada.afirmacao;
+    const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
@@ -126,6 +126,11 @@ function mostraResultado() {
     caixaPerguntas.textContent = "Em 2049...";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = "";
+}
+
+function aleatorio (lista){
+    const posicao = Math.floor(Math.random()* lista.length);
+    return lista[posicao];
 }
 
 mostraPergunta();
